@@ -19,6 +19,7 @@
 		1199BE8B2578B6AA000912C6 /* HomeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199BE8A2578B6AA000912C6 /* HomeDetailController.swift */; };
 		1199BE902578C5FA000912C6 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199BE8F2578C5FA000912C6 /* HomeCell.swift */; };
 		1199BE962578FDA5000912C6 /* chinaColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 1199BE952578FDA5000912C6 /* chinaColor.json */; };
+		3020A354257927AF004AA995 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A353257927AF004AA995 /* ColorViewController.swift */; };
 		C97A3FFBF59446973748EEFB /* Pods_SwiftCocopods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9752E93422411A4BA86CB1 /* Pods_SwiftCocopods.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		1199BE8A2578B6AA000912C6 /* HomeDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailController.swift; sourceTree = "<group>"; };
 		1199BE8F2578C5FA000912C6 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		1199BE952578FDA5000912C6 /* chinaColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chinaColor.json; sourceTree = "<group>"; };
+		3020A353257927AF004AA995 /* ColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		4C9752E93422411A4BA86CB1 /* Pods_SwiftCocopods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCocopods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58273BC200159E8DAE2F966A /* Pods-SwiftCocopods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCocopods.debug.xcconfig"; path = "Target Support Files/Pods-SwiftCocopods/Pods-SwiftCocopods.debug.xcconfig"; sourceTree = "<group>"; };
 		D14B76D77EAD189F63EF18AF /* Pods-SwiftCocopods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCocopods.release.xcconfig"; path = "Target Support Files/Pods-SwiftCocopods/Pods-SwiftCocopods.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,15 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				1199BE942578FD97000912C6 /* resources */,
-				1199BE0425778ABA000912C6 /* AppDelegate.swift */,
-				1199BE6C25778EB0000912C6 /* BaseTabbarController.swift */,
-				1199BE85257897A4000912C6 /* CommonConst.swift */,
-				1199BE6425778DA4000912C6 /* HomeViewController.swift */,
-				1199BE8A2578B6AA000912C6 /* HomeDetailController.swift */,
-				1199BE8F2578C5FA000912C6 /* HomeCell.swift */,
-				1199BE5C25778D8E000912C6 /* SettingViewController.swift */,
-				1199BE0D25778ABD000912C6 /* Assets.xcassets */,
-				1199BE0F25778ABD000912C6 /* LaunchScreen.storyboard */,
+				3020A34C257923FA004AA995 /* Tools */,
+				3020A34D25792405004AA995 /* Others */,
+				3020A35B257927C3004AA995 /* Classes */,
 				1199BE1225778ABD000912C6 /* Info.plist */,
 			);
 			path = SwiftCocopods;
@@ -153,6 +149,69 @@
 				1199BE952578FDA5000912C6 /* chinaColor.json */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		3020A34A257923CC004AA995 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1199BE6425778DA4000912C6 /* HomeViewController.swift */,
+				1199BE8A2578B6AA000912C6 /* HomeDetailController.swift */,
+				1199BE8F2578C5FA000912C6 /* HomeCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3020A34B257923D6004AA995 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				1199BE5C25778D8E000912C6 /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		3020A34C257923FA004AA995 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				1199BE85257897A4000912C6 /* CommonConst.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		3020A34D25792405004AA995 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				1199BE0D25778ABD000912C6 /* Assets.xcassets */,
+				1199BE0F25778ABD000912C6 /* LaunchScreen.storyboard */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		3020A34E25792424004AA995 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1199BE6C25778EB0000912C6 /* BaseTabbarController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		3020A35225792795004AA995 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				3020A353257927AF004AA995 /* ColorViewController.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		3020A35B257927C3004AA995 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1199BE0425778ABA000912C6 /* AppDelegate.swift */,
+				3020A34E25792424004AA995 /* Base */,
+				3020A35225792795004AA995 /* Colors */,
+				3020A34B257923D6004AA995 /* Setting */,
+				3020A34A257923CC004AA995 /* Home */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		6BA9B2E2B83C15DB37F70C2B /* Frameworks */ = {
@@ -348,6 +407,7 @@
 			files = (
 				1199BE86257897A4000912C6 /* CommonConst.swift in Sources */,
 				1199BE902578C5FA000912C6 /* HomeCell.swift in Sources */,
+				3020A354257927AF004AA995 /* ColorViewController.swift in Sources */,
 				1199BE6D25778EB0000912C6 /* BaseTabbarController.swift in Sources */,
 				1199BE0525778ABA000912C6 /* AppDelegate.swift in Sources */,
 				1199BE5D25778D8E000912C6 /* SettingViewController.swift in Sources */,
