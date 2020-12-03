@@ -20,6 +20,8 @@
 		1199BE902578C5FA000912C6 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199BE8F2578C5FA000912C6 /* HomeCell.swift */; };
 		1199BE962578FDA5000912C6 /* chinaColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 1199BE952578FDA5000912C6 /* chinaColor.json */; };
 		3020A354257927AF004AA995 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A353257927AF004AA995 /* ColorViewController.swift */; };
+		30764D9E25792C110073A0C4 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30764D9D25792C110073A0C4 /* ColorCell.swift */; };
+		30764DA625792E030073A0C4 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30764DA525792E030073A0C4 /* ColorModel.swift */; };
 		C97A3FFBF59446973748EEFB /* Pods_SwiftCocopods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9752E93422411A4BA86CB1 /* Pods_SwiftCocopods.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		1199BE8F2578C5FA000912C6 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		1199BE952578FDA5000912C6 /* chinaColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chinaColor.json; sourceTree = "<group>"; };
 		3020A353257927AF004AA995 /* ColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
+		30764D9D25792C110073A0C4 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
+		30764DA525792E030073A0C4 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
 		4C9752E93422411A4BA86CB1 /* Pods_SwiftCocopods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCocopods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58273BC200159E8DAE2F966A /* Pods-SwiftCocopods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCocopods.debug.xcconfig"; path = "Target Support Files/Pods-SwiftCocopods/Pods-SwiftCocopods.debug.xcconfig"; sourceTree = "<group>"; };
 		D14B76D77EAD189F63EF18AF /* Pods-SwiftCocopods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCocopods.release.xcconfig"; path = "Target Support Files/Pods-SwiftCocopods/Pods-SwiftCocopods.release.xcconfig"; sourceTree = "<group>"; };
@@ -197,7 +201,9 @@
 		3020A35225792795004AA995 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
-				3020A353257927AF004AA995 /* ColorViewController.swift */,
+				30764DA425792DE80073A0C4 /* Model */,
+				30764DA325792DCD0073A0C4 /* View */,
+				30764DA225792DBD0073A0C4 /* Controller */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -212,6 +218,30 @@
 				3020A34A257923CC004AA995 /* Home */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		30764DA225792DBD0073A0C4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3020A353257927AF004AA995 /* ColorViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		30764DA325792DCD0073A0C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				30764D9D25792C110073A0C4 /* ColorCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		30764DA425792DE80073A0C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				30764DA525792E030073A0C4 /* ColorModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		6BA9B2E2B83C15DB37F70C2B /* Frameworks */ = {
@@ -407,12 +437,14 @@
 			files = (
 				1199BE86257897A4000912C6 /* CommonConst.swift in Sources */,
 				1199BE902578C5FA000912C6 /* HomeCell.swift in Sources */,
+				30764D9E25792C110073A0C4 /* ColorCell.swift in Sources */,
 				3020A354257927AF004AA995 /* ColorViewController.swift in Sources */,
 				1199BE6D25778EB0000912C6 /* BaseTabbarController.swift in Sources */,
 				1199BE0525778ABA000912C6 /* AppDelegate.swift in Sources */,
 				1199BE5D25778D8E000912C6 /* SettingViewController.swift in Sources */,
 				1199BE6525778DA4000912C6 /* HomeViewController.swift in Sources */,
 				1199BE8B2578B6AA000912C6 /* HomeDetailController.swift in Sources */,
+				30764DA625792E030073A0C4 /* ColorModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,7 +43,6 @@ class HomeCell: UITableViewCell {
         titleLabel?.text = "美丽的风景标题"
         titleLabel?.backgroundColor = UIColor(hex: "#E0F0E9ff")
         titleLabel?.textColor = UIColor(hex: "#425066ff")
-//        titleLabel?.textAlignment = NSTextAlignment.center
         self.contentView.addSubview(titleLabel!)
         
         subTitleLabel = UILabel()
@@ -60,14 +59,16 @@ class HomeCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
+
         iconImage?.snp.makeConstraints({ (make) in
             make.top.left.equalTo(10)
             make.width.height.equalTo(80)
+            
         })
         
         titleLabel?.snp.makeConstraints({ (make) in
             make.left.equalTo(self.iconImage!.snp.right).offset(5)
-            make.top.equalTo(self.iconImage!)
+            make.top.equalTo(self.iconImage!.snp.top)
             make.height.equalTo(30)
             make.right.equalTo(-10)
         })

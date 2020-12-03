@@ -10,7 +10,7 @@ import SnapKit
 
 class HomeViewController: UIViewController {
 
-    lazy var tableView:UITableView = UITableView()
+    lazy var tableView:UITableView = UITableView(frame: CGRect.zero, style: UITableView.Style.plain)
     var array:[NSString] = ["custom cell",
                             "customNibCell",
                             "custom cell",

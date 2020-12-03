@@ -16,9 +16,9 @@ class BaseTabbarController: UITabBarController {
         let homeItem =  UITabBarItem(title: "Home", image: UIImage(named: "home_selected"), tag: 0)
         homeNav.tabBarItem = homeItem
         
-        let colorsNav = UINavigationController(rootViewController:ColorsViewController())
+        let colorsNav = UINavigationController(rootViewController:ColorViewController())
         let colorItem =  UITabBarItem(title: "Colors", image: UIImage(named: "colors"), selectedImage: UIImage(named: "colors_selected"))
-        settingNav.tabBarItem = setttingItem
+        colorsNav.tabBarItem = colorItem
         
         let settingNav = UINavigationController(rootViewController: SettingViewController())
         let setttingItem =  UITabBarItem(title: "Setting", image: UIImage(named: "setting"), selectedImage: UIImage(named: "setting_selected"))
