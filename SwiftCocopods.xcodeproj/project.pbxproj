@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		116452DA257A18AD00C9CE9F /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 116452D9257A18AD00C9CE9F /* colors.json */; };
+		116452DF257A2EDE00C9CE9F /* ColorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116452DE257A2EDE00C9CE9F /* ColorDetailController.swift */; };
 		1199BE0525778ABA000912C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199BE0425778ABA000912C6 /* AppDelegate.swift */; };
 		1199BE0E25778ABD000912C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1199BE0D25778ABD000912C6 /* Assets.xcassets */; };
 		1199BE1125778ABD000912C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1199BE0F25778ABD000912C6 /* LaunchScreen.storyboard */; };
@@ -18,7 +20,6 @@
 		1199BE86257897A4000912C6 /* CommonConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199BE85257897A4000912C6 /* CommonConst.swift */; };
 		1199BE8B2578B6AA000912C6 /* HomeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199BE8A2578B6AA000912C6 /* HomeDetailController.swift */; };
 		1199BE902578C5FA000912C6 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199BE8F2578C5FA000912C6 /* HomeCell.swift */; };
-		1199BE962578FDA5000912C6 /* chinaColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 1199BE952578FDA5000912C6 /* chinaColor.json */; };
 		3020A354257927AF004AA995 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A353257927AF004AA995 /* ColorViewController.swift */; };
 		30764D9E25792C110073A0C4 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30764D9D25792C110073A0C4 /* ColorCell.swift */; };
 		30764DA625792E030073A0C4 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30764DA525792E030073A0C4 /* ColorModel.swift */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		116452D9257A18AD00C9CE9F /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
+		116452DE257A2EDE00C9CE9F /* ColorDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetailController.swift; sourceTree = "<group>"; };
 		1199BE0125778ABA000912C6 /* SwiftCocopods.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCocopods.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1199BE0425778ABA000912C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1199BE0D25778ABD000912C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +63,6 @@
 		1199BE85257897A4000912C6 /* CommonConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConst.swift; sourceTree = "<group>"; };
 		1199BE8A2578B6AA000912C6 /* HomeDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailController.swift; sourceTree = "<group>"; };
 		1199BE8F2578C5FA000912C6 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
-		1199BE952578FDA5000912C6 /* chinaColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chinaColor.json; sourceTree = "<group>"; };
 		3020A353257927AF004AA995 /* ColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		30764D9D25792C110073A0C4 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		30764DA525792E030073A0C4 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
@@ -150,7 +152,7 @@
 		1199BE942578FD97000912C6 /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				1199BE952578FDA5000912C6 /* chinaColor.json */,
+				116452D9257A18AD00C9CE9F /* colors.json */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				3020A353257927AF004AA995 /* ColorViewController.swift */,
+				116452DE257A2EDE00C9CE9F /* ColorDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -366,8 +369,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116452DA257A18AD00C9CE9F /* colors.json in Resources */,
 				1199BE1125778ABD000912C6 /* LaunchScreen.storyboard in Resources */,
-				1199BE962578FDA5000912C6 /* chinaColor.json in Resources */,
 				1199BE0E25778ABD000912C6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +444,7 @@
 				3020A354257927AF004AA995 /* ColorViewController.swift in Sources */,
 				1199BE6D25778EB0000912C6 /* BaseTabbarController.swift in Sources */,
 				1199BE0525778ABA000912C6 /* AppDelegate.swift in Sources */,
+				116452DF257A2EDE00C9CE9F /* ColorDetailController.swift in Sources */,
 				1199BE5D25778D8E000912C6 /* SettingViewController.swift in Sources */,
 				1199BE6525778DA4000912C6 /* HomeViewController.swift in Sources */,
 				1199BE8B2578B6AA000912C6 /* HomeDetailController.swift in Sources */,

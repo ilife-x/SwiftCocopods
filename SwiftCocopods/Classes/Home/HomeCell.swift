@@ -41,17 +41,17 @@ class HomeCell: UITableViewCell {
         
         titleLabel = UILabel()
         titleLabel?.text = "美丽的风景标题"
-        titleLabel?.backgroundColor = UIColor(hex: "#E0F0E9ff")
+        titleLabel?.backgroundColor = .white
         titleLabel?.textColor = UIColor(hex: "#425066ff")
         self.contentView.addSubview(titleLabel!)
         
         subTitleLabel = UILabel()
         subTitleLabel?.numberOfLines = 0
-        subTitleLabel?.backgroundColor = UIColor(hex: "#E0F0E9FF")
+        subTitleLabel?.backgroundColor = .white
         subTitleLabel?.textColor = UIColor(hex: "#424C50ff")
         subTitleLabel?.font = UIFont.systemFont(ofSize: 14)
         
-        subTitleLabel?.text = "积分大健康了放大发电机房大解放路,发极大今飞凯达,付了定金阿里解放东路卡减肥发觉打卡记录防静电看啦发动机安抚来得及啊"
+        subTitleLabel?.text = "月白天青曙色早，柳绿蝶红山色晓"
         self.contentView.addSubview(subTitleLabel!)
         
         //刷新布局
