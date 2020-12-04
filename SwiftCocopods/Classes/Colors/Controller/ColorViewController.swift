@@ -52,7 +52,6 @@ class ColorViewController: UIViewController {
                     print(model.title!,model.rgb!,model.cmyk!,model.hex!)
                     modelArray.append(model)
                     
-                        
                 }
                     
             } catch let error as Error? {
@@ -77,15 +76,25 @@ extension ColorViewController:UITableViewDelegate,UITableViewDataSource{
         if let cell = cell as? ColorCell {
             
             let model = self.modelArray[indexPath.row]
-            cell.backgroundColor = .white
+//            cell.backgroundColor = .white
             cell.model = model
         }
 
         return cell!
         
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = modelArray[indexPath.row]
+        let colorDetailVc = ColorDetailController()
+        colorDetailVc.model = model
+        self.navigationController?.pushViewController(colorDetailVc, animated: true)
+        
+        
     }
     
     

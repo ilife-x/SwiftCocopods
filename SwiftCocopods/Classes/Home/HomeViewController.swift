@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
         tableView.frame = CGRect(x: 0, y: kUINavigationBarHeight, width: kUIScreenWidth, height: kUIScreenHeight-kUINavigationBarHeight-KUITabBarHeight)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .gray
+        tableView.backgroundColor = .white
         tableView.estimatedRowHeight = 88
         view.addSubview(tableView)
         
@@ -72,7 +72,7 @@ extension HomeViewController:UITableViewDataSource,UITableViewDelegate{
         if let cell = cell as? HomeCell {
             cell.selectionStyle = .none
             cell.textLabel?.text = array[indexPath.row] as String
-            cell.backgroundColor = UIColor(hex: "#E0EEE8FF")
+            cell.backgroundColor = UIColor(hex: "#FFFFFFFF")
         }
 
         return cell!
