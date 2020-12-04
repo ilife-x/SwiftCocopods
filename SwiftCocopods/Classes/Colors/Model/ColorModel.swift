@@ -13,6 +13,8 @@ class ColorModel: Mappable {
     public var hex:String?
     public var rgb:String?
     public var cmyk:String?
+    public var desc:String?
+
     
     
     required init(map:Map) {
@@ -25,6 +27,8 @@ class ColorModel: Mappable {
         hex         <- map["HEX"]
         rgb         <- map["RGB"]
         cmyk        <- map["CMYK"]
+        desc        <- map["Desc"]
+
 
     }
 }
