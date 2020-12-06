@@ -37,6 +37,8 @@ class HomeViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.white
         self.title = "home"
+        self.navigationItem.titleView?.backgroundColor = .black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 
         tableView.frame = CGRect(x: 0, y: kUINavigationBarHeight, width: kUIScreenWidth, height: kUIScreenHeight-kUINavigationBarHeight-KUITabBarHeight)
         tableView.delegate = self
@@ -73,7 +75,9 @@ extension HomeViewController:UITableViewDataSource,UITableViewDelegate{
             cell.selectionStyle = .none
             cell.textLabel?.text = array[indexPath.row] as String
             cell.backgroundColor = UIColor(hex: "#FFFFFFFF")
+            cell.selectionStyle = .none
         }
+        
 
         return cell!
         
@@ -82,16 +86,8 @@ extension HomeViewController:UITableViewDataSource,UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            print(indexPath.row)
-            self.navigationController?.pushViewController(HomeDetailController(), animated: true)
-        case 1:
-            print(indexPath.row)
-            self.navigationController?.pushViewController(HomeDetailController(), animated: true)
-        default:
-            return
-        }
+        self.navigationController?.pushViewController(HomeDetailController(), animated: true)
+
     }
     
     

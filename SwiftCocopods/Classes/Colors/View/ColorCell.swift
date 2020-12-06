@@ -20,24 +20,61 @@ class ColorCell: UITableViewCell {
     public  var model:ColorModel{
         set(model){
             
-            titleLabel?.text = model.title
-            titleLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
+            contentView.layer.borderColor = UIColor(hex: (model.hex?.appending("1f"))!)?.cgColor
+            contentView.layer.backgroundColor = UIColor(hex: (model.hex?.appending("0f"))!)?.cgColor
+            
 
-            rgbLabel?.text = "RGB: ".appending(model.rgb!)
-            cmykLabel?.text = "CMYK: ".appending(model.cmyk!)
-            hexLabel?.text = "HEX: ".appending((model.hex?.appending("ff"))!)
+
+            
+            titleLabel?.text = model.title
+            
+            if ((model.title?.contains("白")) == true || model.title?.contains("黄") == true) {
+                let randomColor = UIColor.randomColor
+                
+                titleLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
+                titleLabel?.textColor = randomColor
+
+                rgbLabel?.text = "RGB: ".appending(model.rgb!)
+                rgbLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
+                rgbLabel?.textColor = randomColor
+
+                cmykLabel?.text = "CMYK: ".appending(model.cmyk!)
+                cmykLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
+                cmykLabel?.textColor = randomColor
+
+                hexLabel?.text = "HEX: ".appending((model.hex?.appending("ff"))!)
+                hexLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
+                hexLabel?.textColor = randomColor
+                
+                descLabel?.textColor = randomColor
+
+            }else{
+                titleLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
+                titleLabel?.textColor = .white
+
+                rgbLabel?.text = "RGB: ".appending(model.rgb!)
+                rgbLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
+
+                cmykLabel?.text = "CMYK: ".appending(model.cmyk!)
+                cmykLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
+
+                hexLabel?.text = "HEX: ".appending((model.hex?.appending("ff"))!)
+                hexLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
+                
+                descLabel?.textColor = UIColor (hex: (model.hex?.appending("ff"))!)
+
+            }
+
+
             if model.desc!.isEmpty {
                 descLabel?.text =  model.title?.appending(": 少年!我只能说只可意会不可言传")
             }else{
                 descLabel?.text = model.desc
 
             }
-            descLabel?.textColor = UIColor (hex: (model.hex?.appending("ff"))!)
             colorView?.backgroundColor = UIColor(hex: (model.hex?.appending("ff"))!)
         }
-        get{
-           return self.model
-        }
+        get{return self.model}
         
         
 
@@ -56,26 +93,38 @@ class ColorCell: UITableViewCell {
         
         self.contentView.layer.shadowColor = UIColor.black.cgColor
         contentView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        contentView.layer.shadowOpacity = 0.5
+        contentView.layer.shadowOpacity = 0.25
+        
+        contentView.layer.borderWidth = 1
         
         
         colorView = UIView()
         colorView?.layer.cornerRadius = 30
-        colorView?.layer.masksToBounds = true
         
         titleLabel = UILabel()
         titleLabel?.layer.cornerRadius = 10
         titleLabel?.layer.masksToBounds = true
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        titleLabel?.textAlignment = .center
         
         rgbLabel = UILabel()
         rgbLabel?.font = UIFont.systemFont(ofSize: 14)
+        rgbLabel?.layer.cornerRadius = 5
+        rgbLabel?.layer.masksToBounds = true
+        rgbLabel?.textAlignment = .right
         
         cmykLabel = UILabel()
         cmykLabel?.font = UIFont.systemFont(ofSize: 14)
+        cmykLabel?.layer.cornerRadius = 5
+        cmykLabel?.layer.masksToBounds = true
+        cmykLabel?.textAlignment = .right
         
         hexLabel = UILabel()
         hexLabel?.font = UIFont.systemFont(ofSize: 14)
+        hexLabel?.layer.cornerRadius = 5
+        hexLabel?.layer.masksToBounds = true
+        hexLabel?.textAlignment = .right
+
         
         descLabel = UILabel()
         descLabel?.font = UIFont.systemFont(ofSize: 15)
@@ -102,7 +151,7 @@ class ColorCell: UITableViewCell {
             make.top.equalTo(10)
             make.left.equalTo(self.colorView!.snp.right).offset(6)
             make.height.equalTo(50)
-            make.width.equalTo(125)
+            make.width.equalTo(85)
         })
         
         rgbLabel?.snp.makeConstraints({ (make) in
@@ -113,14 +162,14 @@ class ColorCell: UITableViewCell {
         
         cmykLabel?.snp.makeConstraints({ (make) in
             make.top.equalTo(rgbLabel!.snp.bottom).offset(2)
-            make.right.equalTo(-10)
+            make.right.equalTo(-40)
             make.left.equalTo(titleLabel!.snp.right).offset(4)
             
         })
         
         hexLabel?.snp.makeConstraints({ (make) in
             make.top.equalTo(cmykLabel!.snp.bottom).offset(2)
-            make.right.equalTo(-10)
+            make.right.equalTo(-70)
             make.left.equalTo(titleLabel!.snp.right).offset(4)
         })
         
