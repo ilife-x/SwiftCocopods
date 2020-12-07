@@ -8,77 +8,107 @@
 import UIKit
 import SnapKit
 
-class HomeCell: UITableViewCell {
+class HomeCell: UICollectionViewCell {
     
-    var iconImage:UIImageView?
-    var titleLabel:UILabel?
-    var subTitleLabel:UILabel?
-    
-    
-    
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.setupUI()
+    private  var titleLabel: UILabel?
+    private var rgbLabel :UILabel?
+    private var hexLabel :UILabel?
+
+    public var model:ColorModel{
+        set(model){
+            titleLabel?.text = model.title
+            contentView.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
+            contentView.layer.borderColor = UIColor.randomColor.cgColor
+
+
+            if ((model.title?.contains("白")) == true || model.title?.contains("黄") == true) {
+                let randomColor = UIColor.randomColor
+                
+                titleLabel?.textColor = randomColor
+
+                rgbLabel?.text = "RGB: ".appending(model.rgb!)
+                rgbLabel?.textColor = randomColor
+
+                hexLabel?.text = "HEX: ".appending((model.hex?.appending("ff"))!)
+                hexLabel?.textColor = randomColor
+                
+            }else{
+                titleLabel?.textColor = .white
+                rgbLabel?.text = "RGB: ".appending(model.rgb!)
+                hexLabel?.text = "HEX: ".appending((model.hex?.appending("ff"))!)
+                
+            }
+
+        }
+        
+        get{return self.model}
+
     }
-    
+  
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configUI()
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    func setupUI() {
-        iconImage = UIImageView(image: UIImage(named: "header_girl"))
-        iconImage?.layer.cornerRadius = 40
-        iconImage?.layer.masksToBounds = true
-        self.contentView.addSubview(iconImage!)
+    func configUI() {
+        let cardView = UIView()
+        contentView.addSubview(cardView)
+        contentView.layer.cornerRadius = (kUIScreenWidth-150)/2
+        contentView.layer.shadowColor = UIColor.randomColor.cgColor
+        contentView.layer.shadowOffset = CGSize(width: 5, height: 15)
+        contentView.layer.shadowOpacity = 0.45
+        contentView.layer.borderWidth = 2
         
         titleLabel = UILabel()
-        titleLabel?.text = "美丽的风景标题"
-        titleLabel?.backgroundColor = .white
-        titleLabel?.textColor = UIColor(hex: "#425066ff")
-        self.contentView.addSubview(titleLabel!)
+        titleLabel?.layer.cornerRadius = 10
+        titleLabel?.layer.masksToBounds = true
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 45)
+        titleLabel?.textAlignment = .center
         
-        subTitleLabel = UILabel()
-        subTitleLabel?.numberOfLines = 0
-        subTitleLabel?.backgroundColor = .white
-        subTitleLabel?.textColor = UIColor(hex: "#424C50ff")
-        subTitleLabel?.font = UIFont.systemFont(ofSize: 14)
+        rgbLabel = UILabel()
+        rgbLabel?.font = UIFont.systemFont(ofSize: 14)
+        rgbLabel?.layer.cornerRadius = 5
+        rgbLabel?.layer.masksToBounds = true
+        rgbLabel?.textAlignment = .right
         
-        subTitleLabel?.text = "月白天青曙色早，柳绿蝶红山色晓"
-        self.contentView.addSubview(subTitleLabel!)
+        hexLabel = UILabel()
+        hexLabel?.font = UIFont.systemFont(ofSize: 14)
+        hexLabel?.layer.cornerRadius = 5
+        hexLabel?.layer.masksToBounds = true
+        hexLabel?.textAlignment = .right
         
-        //刷新布局
-        self.layoutIfNeeded()
-    }
-    
-    override func layoutSubviews() {
-
-        iconImage?.snp.makeConstraints({ (make) in
-            make.top.left.equalTo(10)
-            make.width.height.equalTo(80)
-            
-        })
+        contentView.addSubview(titleLabel!)
+        contentView.addSubview(rgbLabel!)
+        contentView.addSubview(hexLabel!)
+        
         
         titleLabel?.snp.makeConstraints({ (make) in
-            make.left.equalTo(self.iconImage!.snp.right).offset(5)
-            make.top.equalTo(self.iconImage!.snp.top)
-            make.height.equalTo(30)
-            make.right.equalTo(-10)
+            make.center.equalTo(contentView)
         })
         
-        subTitleLabel?.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.titleLabel!.snp.bottom).offset(2)
-            make.left.right.equalTo(self.titleLabel!)
-            make.height.greaterThanOrEqualTo(40)
-            make.bottom.equalTo(-10)
+        rgbLabel?.snp.makeConstraints({ (make) in
+            make.bottom.equalTo(-30)
+            make.centerX.equalTo(contentView)
         })
+        
+        hexLabel?.snp.makeConstraints({ (make) in
+            make.top.equalTo(30)
+            make.centerX.equalTo(contentView)
+
+        })
+        
+        
     }
+    
+    
+    
+    
+    
+
 
 }

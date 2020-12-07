@@ -75,8 +75,6 @@ class ColorCell: UITableViewCell {
             colorView?.backgroundColor = UIColor(hex: (model.hex?.appending("ff"))!)
         }
         get{return self.model}
-        
-        
 
     }
     

@@ -40,7 +40,6 @@ class ColorViewController: UIViewController {
         
         
         let faverateItem = UIBarButtonItem(image: UIImage(named: "faverate"), style: UIBarButtonItem.Style.done, target: self, action: #selector(jumpToFaverateColorsController))
-        faverateItem.image?.scale
         let deletaItem = UIBarButtonItem(image: UIImage(named: "delete"), style: UIBarButtonItem.Style.done, target: self, action: #selector(jumpToDeleteColorsController))
         let array :[UIBarButtonItem] = [faverateItem,deletaItem]
         self.navigationItem.rightBarButtonItems = array
@@ -80,11 +79,11 @@ class ColorViewController: UIViewController {
 extension ColorViewController{
     
     @objc fileprivate func jumpToFaverateColorsController(){
-        
+        self.navigationController?.pushViewController(FaverateController(), animated: true)
     }
     
     @objc fileprivate func jumpToDeleteColorsController(){
-         
+        self.navigationController?.pushViewController(DeleteController(), animated: true)
      }
 }
 
