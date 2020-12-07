@@ -11,6 +11,11 @@ import SnapKit
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var modelArray=[ColorModel]()
+    var collectionView:UICollectionView?
+    var autoTimer:Timer?
+    var index:Int = 0
+    var px:CGFloat = 0
+    
 
     
     override func viewDidLoad() {
@@ -20,22 +25,28 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.title = "home"
         self.navigationItem.titleView?.backgroundColor = .black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        //设置导航栏背景为空图片
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
 
         configUI()
         configData()
+        setTimer()
     }
     
     func configUI() {
+        let iconWidth = kUIScreenWidth - 200
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionView.ScrollDirection.horizontal  //滚动方向
-        layout.itemSize = CGSize(width:(kUIScreenWidth - 150), height:(kUIScreenWidth - 150))
+        layout.itemSize = CGSize(width:iconWidth, height:iconWidth)
         // 设置CollectionView
-        let collectionView : UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .white
-        collectionView.register(HomeCell.self, forCellWithReuseIdentifier: NSStringFromClass(HomeCell.self))
-        self.view.addSubview(collectionView)
+        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        collectionView?.layer.contents = UIImage(named: "fengjing_0")?.cgImage
+        collectionView?.register(HomeCell.self, forCellWithReuseIdentifier: NSStringFromClass(HomeCell.self))
+        self.view.addSubview(collectionView!)
         
         
         let showCardView = UIView()
@@ -44,27 +55,42 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.view.addSubview(showCardView)
         showCardView.layer.shadowColor = UIColor.randomColor.cgColor
         showCardView.layer.shadowOffset = CGSize(width: 5, height: -15)
-        showCardView.layer.shadowOpacity = 0.45
+        showCardView.layer.shadowOpacity = 0.15
         showCardView.layer.borderWidth = 2
         
         
         
-        collectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(kUINavigationBarHeight)
+        collectionView?.snp.makeConstraints { (make) in
+            make.top.equalTo(0)
             make.left.right.equalTo(0)
-            make.height.equalTo(kUIScreenWidth - 120)
+            make.height.equalTo(kUIScreenWidth - 100)
         }
         
         showCardView.snp.makeConstraints { (make) in
-            make.top.equalTo(collectionView.snp.bottom).offset(20)
+            make.top.equalTo(collectionView!.snp.bottom).offset(20)
             make.left.equalTo(50)
             make.right.equalTo(-50)
             make.bottom.equalTo(-100)
         }
         
-        
     }
     
+    func setTimer() {
+        autoTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(scroll), userInfo: nil, repeats: true)
+    }
+    
+    @objc func scroll(){
+        index = index + 1
+        px = px + 10
+        index = index >= modelArray.count ? 0 :index
+
+        collectionView?.contentOffset.x = (collectionView?.contentOffset.x)! + 0.5
+
+        if (collectionView?.contentOffset.x)! >= (collectionView?.contentSize.width)! - (collectionView?.frame.size.width)! {
+            collectionView?.contentOffset.x = 0
+        }
+        
+    }
     
     func configData(){
         let path = Bundle.main.path(forResource: "colors", ofType: "json")
@@ -90,6 +116,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     
+    /// MARK :delegate &datasource
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return modelArray.count
     }
@@ -100,7 +128,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         if let cell = cell as? HomeCell {
             let model = self.modelArray[indexPath.row]
-            cell.backgroundColor = .white
             cell.model = model
         }
 

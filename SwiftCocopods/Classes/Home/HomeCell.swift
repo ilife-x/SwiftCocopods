@@ -13,12 +13,16 @@ class HomeCell: UICollectionViewCell {
     private  var titleLabel: UILabel?
     private var rgbLabel :UILabel?
     private var hexLabel :UILabel?
+    
+
+    
+    
 
     public var model:ColorModel{
         set(model){
             titleLabel?.text = model.title
             contentView.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
-            contentView.layer.borderColor = UIColor.randomColor.cgColor
+            contentView.layer.borderColor = UIColor.white.cgColor
 
 
             if ((model.title?.contains("白")) == true || model.title?.contains("黄") == true) {
@@ -54,14 +58,17 @@ class HomeCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+
     
     func configUI() {
+        let iconWidth = kUIScreenWidth - 200
+
         let cardView = UIView()
         contentView.addSubview(cardView)
-        contentView.layer.cornerRadius = (kUIScreenWidth-150)/2
+        contentView.layer.cornerRadius = iconWidth/2
         contentView.layer.shadowColor = UIColor.randomColor.cgColor
-        contentView.layer.shadowOffset = CGSize(width: 5, height: 15)
-        contentView.layer.shadowOpacity = 0.45
+        contentView.layer.shadowOffset = CGSize(width: 5, height: 10)
+        contentView.layer.shadowOpacity = 0.25
         contentView.layer.borderWidth = 2
         
         titleLabel = UILabel()
