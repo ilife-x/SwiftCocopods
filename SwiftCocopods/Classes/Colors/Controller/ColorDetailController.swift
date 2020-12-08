@@ -16,43 +16,96 @@ class ColorDetailController: UIViewController {
     private var downLoadImageView :UIImageView?
     private var faverateBtn:UIButton?
     
+    private var displayView:UIView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 1.0) {
-            self.navigationController?.navigationBar.alpha = 0
+        UIView.animate(withDuration: 0.25) {
             self.tabBarController?.tabBar.alpha = 0
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
-        UIView.animate(withDuration: 1.0) {
-            self.navigationController?.navigationBar.alpha = 1
+        UIView.animate(withDuration: 0.25) {
             self.tabBarController?.tabBar.alpha = 1
         }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
-        UIView.animate(withDuration: 1.0) {
-            self.navigationController?.navigationBar.alpha = 1
+        UIView.animate(withDuration: 0.25) {
             self.tabBarController?.tabBar.alpha = 1
         }
     }
     
     func configUI()  {
+        //设置导航栏背景为空图片
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.tabBarController?.tabBar.alpha = 0
         view.backgroundColor = UIColor(hex: (model!.hex?.appending("FF"))!)
         
-        titleLabel = UILabel(frame: CGRect(x: 20, y: kUINavigationBarHeight+20, width: 100, height: 50))
-        titleLabel?.text = model?.title
-        titleLabel?.textColor = .white
-        titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-        view.addSubview(titleLabel!)
         
+        
+//        titleLabel = UILabel(frame: CGRect(x: 20, y: kUINavigationBarHeight+20, width: 100, height: 50))
+//        titleLabel?.text = model?.title
+//        titleLabel?.textColor = .white
+//        titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+//        view.addSubview(titleLabel!)
+        
+        //长按分享
         let longPressGes = UILongPressGestureRecognizer(target: self, action: #selector(share))
         self.view.addGestureRecognizer(longPressGes)
+        
+        drawText()
+    }
+    
+    
+    @objc func drawText() {
+        displayView = UIView(frame: CGRect(x: 20, y: kUINavigationBarHeight, width: 100, height: 50))
+//        displayView?.backgroundColor = UIColor.randomColor
+        self.view.addSubview(displayView!)
+        
+        if (model?.title!.count)! > 0 {
+            let bezierPath = UIBezierPath().transform(toBezierPath: "绯红色")
+            
+            let layer = CAShapeLayer()
+            layer.bounds = bezierPath.cgPath.boundingBox
+            layer.position = CGPoint(x: 20, y: kUIStatusBarHeight)
+            layer.isGeometryFlipped = true//?
+            layer.path = bezierPath.cgPath
+            layer.fillColor = UIColor.clear.cgColor
+            layer.lineWidth = 1
+            layer.strokeColor = UIColor.randomColor.cgColor
+            
+            let animation = CABasicAnimation(keyPath: "strokEnd")
+            animation.fromValue = 0
+            animation.toValue = 1
+            animation.duration = CFTimeInterval(layer.bounds.size.width / 3)
+            layer.add(animation, forKey: nil)
+            self.displayView?.layer.addSublayer(layer)
+            
+            let penImage = UIImage(named: "pen")
+            let penLayer = CALayer()
+            penLayer.contents = penImage?.cgImage
+            penLayer.anchorPoint = CGPoint.zero
+            penLayer.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            layer.addSublayer(penLayer)
+            
+            let penAnimation = CAKeyframeAnimation(keyPath: "position")
+            penAnimation.duration = animation.duration
+            penAnimation.path = layer.path
+            penAnimation.calculationMode = .paced
+            penAnimation.isRemovedOnCompletion = false
+            penAnimation.fillMode = .forwards
+            penLayer.add(penAnimation, forKey: "position")
+            
+//            penLayer.perform(#selector(removeFromParent), with: nil, afterDelay: penAnimation.duration + 0.5)
+
+        }
     }
     
   @objc  func share() {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1134FE79257F7F11007E20A1 /* UIBezierPath+extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1134FE78257F7F11007E20A1 /* UIBezierPath+extension.m */; };
+		1134FE7E257F7F69007E20A1 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1134FE7D257F7F69007E20A1 /* CoreText.framework */; };
 		116452DA257A18AD00C9CE9F /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 116452D9257A18AD00C9CE9F /* colors.json */; };
 		116452DF257A2EDE00C9CE9F /* ColorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116452DE257A2EDE00C9CE9F /* ColorDetailController.swift */; };
 		1197040D257DDEA900FE4468 /* FaverateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1197040C257DDEA900FE4468 /* FaverateController.swift */; };
@@ -22,6 +24,7 @@
 		1199BE86257897A4000912C6 /* CommonConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199BE85257897A4000912C6 /* CommonConst.swift */; };
 		1199BE8B2578B6AA000912C6 /* HomeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199BE8A2578B6AA000912C6 /* HomeDetailController.swift */; };
 		1199BE902578C5FA000912C6 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199BE8F2578C5FA000912C6 /* HomeCell.swift */; };
+		11C9A820257F1EA1006F7E16 /* CTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C9A81F257F1EA1006F7E16 /* CTView.swift */; };
 		3020A354257927AF004AA995 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A353257927AF004AA995 /* ColorViewController.swift */; };
 		30764D9E25792C110073A0C4 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30764D9D25792C110073A0C4 /* ColorCell.swift */; };
 		30764DA625792E030073A0C4 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30764DA525792E030073A0C4 /* ColorModel.swift */; };
@@ -46,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1134FE76257F7F11007E20A1 /* SwiftCocopods-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftCocopods-Bridging-Header.h"; sourceTree = "<group>"; };
+		1134FE77257F7F11007E20A1 /* UIBezierPath+extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+extension.h"; sourceTree = "<group>"; };
+		1134FE78257F7F11007E20A1 /* UIBezierPath+extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+extension.m"; sourceTree = "<group>"; };
+		1134FE7D257F7F69007E20A1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		116452D9257A18AD00C9CE9F /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
 		116452DE257A2EDE00C9CE9F /* ColorDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetailController.swift; sourceTree = "<group>"; };
 		1197040C257DDEA900FE4468 /* FaverateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaverateController.swift; sourceTree = "<group>"; };
@@ -67,6 +74,7 @@
 		1199BE85257897A4000912C6 /* CommonConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConst.swift; sourceTree = "<group>"; };
 		1199BE8A2578B6AA000912C6 /* HomeDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailController.swift; sourceTree = "<group>"; };
 		1199BE8F2578C5FA000912C6 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		11C9A81F257F1EA1006F7E16 /* CTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTView.swift; sourceTree = "<group>"; };
 		3020A353257927AF004AA995 /* ColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		30764D9D25792C110073A0C4 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		30764DA525792E030073A0C4 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
@@ -80,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1134FE7E257F7F69007E20A1 /* CoreText.framework in Frameworks */,
 				C97A3FFBF59446973748EEFB /* Pods_SwiftCocopods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +176,7 @@
 				1199BE6425778DA4000912C6 /* HomeViewController.swift */,
 				1199BE8A2578B6AA000912C6 /* HomeDetailController.swift */,
 				1199BE8F2578C5FA000912C6 /* HomeCell.swift */,
+				11C9A81F257F1EA1006F7E16 /* CTView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -183,6 +193,9 @@
 			isa = PBXGroup;
 			children = (
 				1199BE85257897A4000912C6 /* CommonConst.swift */,
+				1134FE77257F7F11007E20A1 /* UIBezierPath+extension.h */,
+				1134FE78257F7F11007E20A1 /* UIBezierPath+extension.m */,
+				1134FE76257F7F11007E20A1 /* SwiftCocopods-Bridging-Header.h */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -256,6 +269,7 @@
 		6BA9B2E2B83C15DB37F70C2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1134FE7D257F7F69007E20A1 /* CoreText.framework */,
 				4C9752E93422411A4BA86CB1 /* Pods_SwiftCocopods.framework */,
 			);
 			name = Frameworks;
@@ -339,6 +353,7 @@
 				TargetAttributes = {
 					1199BE0025778ABA000912C6 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 					};
 					1199BE1625778ABD000912C6 = {
 						CreatedOnToolsVersion = 12.2;
@@ -445,10 +460,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1199BE86257897A4000912C6 /* CommonConst.swift in Sources */,
+				11C9A820257F1EA1006F7E16 /* CTView.swift in Sources */,
 				1197040D257DDEA900FE4468 /* FaverateController.swift in Sources */,
 				1199BE902578C5FA000912C6 /* HomeCell.swift in Sources */,
 				30764D9E25792C110073A0C4 /* ColorCell.swift in Sources */,
 				3020A354257927AF004AA995 /* ColorViewController.swift in Sources */,
+				1134FE79257F7F11007E20A1 /* UIBezierPath+extension.m in Sources */,
 				1199BE6D25778EB0000912C6 /* BaseTabbarController.swift in Sources */,
 				1199BE0525778ABA000912C6 /* AppDelegate.swift in Sources */,
 				116452DF257A2EDE00C9CE9F /* ColorDetailController.swift in Sources */,
@@ -625,6 +642,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E75BGBW7FV;
 				INFOPLIST_FILE = SwiftCocopods/Info.plist;
@@ -634,6 +652,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiao.swift.SwiftCocopods;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftCocopods/Tools/SwiftCocopods-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -645,6 +665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E75BGBW7FV;
 				INFOPLIST_FILE = SwiftCocopods/Info.plist;
@@ -654,6 +675,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiao.swift.SwiftCocopods;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftCocopods/Tools/SwiftCocopods-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -15,9 +15,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var autoTimer:Timer?
     var index:Int = 0
     var px:CGFloat = 0
-    
-
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +38,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionView.ScrollDirection.horizontal  //滚动方向
         layout.itemSize = CGSize(width:iconWidth, height:iconWidth)
+        
         // 设置CollectionView
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView?.delegate = self
@@ -59,7 +58,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         showCardView.layer.borderWidth = 2
         
         
-        
+        let ctview = CTView()
+        ctview.backgroundColor = .clear
+        showCardView.addSubview(ctview)
+                
         collectionView?.snp.makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.right.equalTo(0)
@@ -72,6 +74,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             make.right.equalTo(-50)
             make.bottom.equalTo(-100)
         }
+        
+        ctview.snp.makeConstraints { (make) in
+            make.center.equalTo(showCardView)
+            make.width.equalTo(200)
+            make.height.equalTo(300)
+
+        }
+        
+        
+        let inner:CATransform3D = CATransform3DMakeRotation(.pi/2, 0, 0, 1)
+        ctview.layer.transform = inner;
         
     }
     
@@ -135,14 +148,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
-
-
-    
-    @objc func touchView(box:UIView) {
-        print("----")
-    }
-    
-
 
 }
 
