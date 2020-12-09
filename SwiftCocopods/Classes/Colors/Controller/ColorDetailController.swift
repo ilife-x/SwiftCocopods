@@ -14,7 +14,7 @@ class ColorDetailController: UIViewController {
     private var card:UIView?
     private var titleLabel:UILabel?
     private var downLoadImageView :UIImageView?
-    private var faverateBtn:UIButton?
+    private var favoriteBtn:UIButton?
     
     private var displayView:UIView?
     

@@ -16,6 +16,8 @@ class ColorCell: UITableViewCell {
     private var cmykLabel :UILabel?
     private var hexLabel :UILabel?
     private var descLabel :UILabel?
+    private var favoriteBtn:UIButton?
+    
 
     public  var model:ColorModel{
         set(model){
@@ -62,19 +64,22 @@ class ColorCell: UITableViewCell {
                 hexLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
                 
                 descLabel?.textColor = UIColor (hex: (model.hex?.appending("ff"))!)
+                
+                if model.desc!.isEmpty {
+                    descLabel?.text =  model.title?.appending(": 少年!我只能说只可意会不可言传")
+                }else{
+                    descLabel?.text = model.desc
+
+                }
+                colorView?.backgroundColor = UIColor(hex: (model.hex?.appending("ff"))!)
 
             }
-
-
-            if model.desc!.isEmpty {
-                descLabel?.text =  model.title?.appending(": 少年!我只能说只可意会不可言传")
-            }else{
-                descLabel?.text = model.desc
-
-            }
-            colorView?.backgroundColor = UIColor(hex: (model.hex?.appending("ff"))!)
+  
         }
-        get{return self.model}
+//
+        get{
+            return self.model
+        }
 
     }
     
@@ -127,6 +132,13 @@ class ColorCell: UITableViewCell {
         descLabel = UILabel()
         descLabel?.font = UIFont.systemFont(ofSize: 15)
         descLabel?.numberOfLines = 0
+        
+        favoriteBtn = UIButton(type: .custom)
+        favoriteBtn?.setImage(UIImage(named: "shoucang"), for: .normal)
+        favoriteBtn?.setImage(UIImage(named: "shoucang_selected"), for: .highlighted)
+        favoriteBtn?.setImage(UIImage(named: "shoucang_selected"), for: .selected)
+
+        
 
         
         contentView.addSubview(colorView!)
@@ -135,6 +147,7 @@ class ColorCell: UITableViewCell {
         contentView.addSubview(cmykLabel!)
         contentView.addSubview(hexLabel!)
         contentView.addSubview(descLabel!)
+        contentView.addSubview(favoriteBtn!)
         
         layoutIfNeeded()
     }
@@ -178,6 +191,15 @@ class ColorCell: UITableViewCell {
 
 
         })
+        
+        favoriteBtn?.snp.makeConstraints({ (make) in
+            make.right.bottom.equalTo(-20)
+            make.width.height.equalTo(30)
+        })
+    }
+    
+    func favoriateColor(){
+        
     }
 
 

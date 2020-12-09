@@ -14,9 +14,8 @@ class ColorModel: Mappable {
     public var rgb:String?
     public var cmyk:String?
     public var desc:String?
-
-    
-    
+    public var slect:Bool = false
+ 
     required init(map:Map) {
 
     }
