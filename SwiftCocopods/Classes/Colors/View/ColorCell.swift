@@ -136,7 +136,8 @@ class ColorCell: UITableViewCell {
         favoriteBtn = UIButton(type: .custom)
         favoriteBtn?.setImage(UIImage(named: "shoucang"), for: .normal)
         favoriteBtn?.setImage(UIImage(named: "shoucang_selected"), for: .highlighted)
-        favoriteBtn?.setImage(UIImage(named: "shoucang_selected"), for: .selected)
+        favoriteBtn?.setImage(#imageLiteral(resourceName: "shoucang_selected"), for: .selected)
+        favoriteBtn?.addTarget(self, action: #selector(self.favoriateColor), for: .touchUpInside)
 
         
 
@@ -198,9 +199,14 @@ class ColorCell: UITableViewCell {
         })
     }
     
-    func favoriateColor(){
-        
+    /**
+     如果一个方法声明为private,就不会添加到方法列表中,报找不到此方法,如果依然需要添加到方法列表中,就需要添加@objc
+     */
+
+   @objc private func favoriateColor(){
+        print("favoriateColor")
     }
 
 
 }
+

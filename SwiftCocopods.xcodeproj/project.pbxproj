@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1134FE79257F7F11007E20A1 /* UIBezierPath+extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1134FE78257F7F11007E20A1 /* UIBezierPath+extension.m */; };
 		1134FE7E257F7F69007E20A1 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1134FE7D257F7F69007E20A1 /* CoreText.framework */; };
+		1134FF17258320CD007E20A1 /* UIBarButtonItem_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1134FF16258320CD007E20A1 /* UIBarButtonItem_extension.swift */; };
+		1134FF2725835EF3007E20A1 /* CCPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1134FF2625835EF3007E20A1 /* CCPresentationController.swift */; };
 		116452DA257A18AD00C9CE9F /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 116452D9257A18AD00C9CE9F /* colors.json */; };
 		116452DF257A2EDE00C9CE9F /* ColorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116452DE257A2EDE00C9CE9F /* ColorDetailController.swift */; };
 		1197040D257DDEA900FE4468 /* FaverateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1197040C257DDEA900FE4468 /* FaverateController.swift */; };
@@ -53,6 +55,8 @@
 		1134FE77257F7F11007E20A1 /* UIBezierPath+extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+extension.h"; sourceTree = "<group>"; };
 		1134FE78257F7F11007E20A1 /* UIBezierPath+extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+extension.m"; sourceTree = "<group>"; };
 		1134FE7D257F7F69007E20A1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		1134FF16258320CD007E20A1 /* UIBarButtonItem_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem_extension.swift; sourceTree = "<group>"; };
+		1134FF2625835EF3007E20A1 /* CCPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPresentationController.swift; sourceTree = "<group>"; };
 		116452D9257A18AD00C9CE9F /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
 		116452DE257A2EDE00C9CE9F /* ColorDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetailController.swift; sourceTree = "<group>"; };
 		1197040C257DDEA900FE4468 /* FaverateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaverateController.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				1199BE5C25778D8E000912C6 /* SettingViewController.swift */,
+				1134FF2625835EF3007E20A1 /* CCPresentationController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				1199BE85257897A4000912C6 /* CommonConst.swift */,
+				1134FF16258320CD007E20A1 /* UIBarButtonItem_extension.swift */,
 				1134FE77257F7F11007E20A1 /* UIBezierPath+extension.h */,
 				1134FE78257F7F11007E20A1 /* UIBezierPath+extension.m */,
 				1134FE76257F7F11007E20A1 /* SwiftCocopods-Bridging-Header.h */,
@@ -463,9 +469,11 @@
 				11C9A820257F1EA1006F7E16 /* CTView.swift in Sources */,
 				1197040D257DDEA900FE4468 /* FaverateController.swift in Sources */,
 				1199BE902578C5FA000912C6 /* HomeCell.swift in Sources */,
+				1134FF17258320CD007E20A1 /* UIBarButtonItem_extension.swift in Sources */,
 				30764D9E25792C110073A0C4 /* ColorCell.swift in Sources */,
 				3020A354257927AF004AA995 /* ColorViewController.swift in Sources */,
 				1134FE79257F7F11007E20A1 /* UIBezierPath+extension.m in Sources */,
+				1134FF2725835EF3007E20A1 /* CCPresentationController.swift in Sources */,
 				1199BE6D25778EB0000912C6 /* BaseTabbarController.swift in Sources */,
 				1199BE0525778ABA000912C6 /* AppDelegate.swift in Sources */,
 				116452DF257A2EDE00C9CE9F /* ColorDetailController.swift in Sources */,

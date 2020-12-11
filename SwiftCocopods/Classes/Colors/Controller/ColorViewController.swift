@@ -39,10 +39,32 @@ class ColorViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.red]
         
         
-        let faverateItem = UIBarButtonItem(image: UIImage(named: "faverate"), style: UIBarButtonItem.Style.done, target: self, action: #selector(jumpToFaverateColorsController))
-        let deletaItem = UIBarButtonItem(image: UIImage(named: "delete"), style: UIBarButtonItem.Style.done, target: self, action: #selector(jumpToDeleteColorsController))
+
+        
+        
+//        let rightBtn1 = UIButton(type:.custom)
+//        rightBtn1.setBackgroundImage(UIImage(named: "faverate"), for: .normal)
+//        rightBtn1.addTarget(self, action: #selector(jumpToFaverateColorsController), for: .touchUpInside)
+//        let faverateItem = UIBarButtonItem(customView: rightBtn1)
+//
+//        let rightBtn2 = UIButton(type:.custom)
+//        rightBtn2.setBackgroundImage(UIImage(named: "delete"), for: .normal)
+//        rightBtn2.addTarget(self, action: #selector(jumpToDeleteColorsController), for: .touchUpInside)
+//        let deletaItem = UIBarButtonItem(customView: rightBtn2)
+        
+        let faverateItem = UIBarButtonItem(imageName: "faverate",target: self,action: #selector(jumpToFaverateColorsController))
+        let deletaItem = UIBarButtonItem(imageName: "delete",target: self,action: #selector(jumpToDeleteColorsController))
+        
+        
+        
+        
         let array :[UIBarButtonItem] = [faverateItem,deletaItem]
         self.navigationItem.rightBarButtonItems = array
+        
+        
+        let leftButton = UIButton(type: .custom)
+        leftButton.backgroundColor = .red
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
         
         
     }
