@@ -115,10 +115,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 let jsonArr = jsonData as! NSArray
                 
                 for dic in jsonArr {
-                    print(dic as! [String:String])
+//                    print(dic as! [String:String])
                     
                     let model:ColorModel = ColorModel.init(JSON: dic as! [String:String])!
-                    print(model.title!,model.rgb!,model.cmyk!,model.hex!)
+//                    print(model.title!,model.rgb!,model.cmyk!,model.hex!)
                     modelArray.append(model)
                     
                 }
