@@ -19,7 +19,11 @@ class CCPresentationController: UIPresentationController {
         //设置背景蒙版
         setupMengBan()
     }
+    
+    
 }
+
+
 
 extension CCPresentationController{
     //设置蒙版

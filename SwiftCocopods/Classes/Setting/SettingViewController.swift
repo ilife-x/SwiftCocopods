@@ -32,6 +32,37 @@ class SettingViewController: UIViewController {
         btn.addTarget(self, action: #selector(clickBtn(sender:)), for: .touchUpInside)
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(NetworkTools.shareInstanse)
+        
+//        NetworkTools.shareInstanse.get("http://httpbin.org/get", parameters: ["name":"wangxiao","age":30], headers: nil, progress: nil) { (task, result) in
+//            if let result = result{print(result)}
+//        } failure: { (task, err) in
+//            print(err)
+//        }
+        
+//        NetworkTools.shareInstanse.post("http://httpbin.org/post", parameters: ["name":"wangxiao","age":30], headers: nil, progress: nil) { (task, result) in
+//            if let result = result{print(result)}
+//        } failure: { (task, err) in
+//            print(err)
+//        }
+        
+        NetworkTools.shareInstanse.request(methodType: .GET, url: "http://httpbin.org/get", parameters: ["name":"wangxiao","age":30], finished:{(result,err)->Void in
+            if let result = result{
+                print(result)
+            }
+        })
+        
+        NetworkTools.shareInstanse.request(methodType: .POST, url: "http://httpbin.org/post", parameters: ["name":"wangxiao","age":30]) { (result,err) in
+            if let result = result {
+                print(result)
+            }
+        }
+                
+
+        
+    }
   
 
 }

@@ -13,13 +13,14 @@ class HomeCell: UICollectionViewCell {
     private  var titleLabel: UILabel?
     private var rgbLabel :UILabel?
     private var hexLabel :UILabel?
-    
+    private var _colorModel :ColorModel?
 
     
     
 
     public var model:ColorModel{
         set(model){
+            _colorModel = model
             titleLabel?.text = model.title
             contentView.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
             contentView.layer.borderColor = UIColor.white.cgColor
@@ -45,7 +46,7 @@ class HomeCell: UICollectionViewCell {
 
         }
         
-        get{return self.model}
+        get{return _colorModel!}
 
     }
   

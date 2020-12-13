@@ -31,6 +31,7 @@
 		30764D9E25792C110073A0C4 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30764D9D25792C110073A0C4 /* ColorCell.swift */; };
 		30764DA625792E030073A0C4 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30764DA525792E030073A0C4 /* ColorModel.swift */; };
 		30A18875258532D60050C174 /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A18874258532D60050C174 /* PopoverAnimator.swift */; };
+		30A188812585FE680050C174 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A188802585FE680050C174 /* NetworkTools.swift */; };
 		C97A3FFBF59446973748EEFB /* Pods_SwiftCocopods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9752E93422411A4BA86CB1 /* Pods_SwiftCocopods.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		30764D9D25792C110073A0C4 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		30764DA525792E030073A0C4 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
 		30A18874258532D60050C174 /* PopoverAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverAnimator.swift; sourceTree = "<group>"; };
+		30A188802585FE680050C174 /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		4C9752E93422411A4BA86CB1 /* Pods_SwiftCocopods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCocopods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58273BC200159E8DAE2F966A /* Pods-SwiftCocopods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCocopods.debug.xcconfig"; path = "Target Support Files/Pods-SwiftCocopods/Pods-SwiftCocopods.debug.xcconfig"; sourceTree = "<group>"; };
 		D14B76D77EAD189F63EF18AF /* Pods-SwiftCocopods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCocopods.release.xcconfig"; path = "Target Support Files/Pods-SwiftCocopods/Pods-SwiftCocopods.release.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				1134FE78257F7F11007E20A1 /* UIBezierPath+extension.m */,
 				1134FE76257F7F11007E20A1 /* SwiftCocopods-Bridging-Header.h */,
 				30A18874258532D60050C174 /* PopoverAnimator.swift */,
+				30A188802585FE680050C174 /* NetworkTools.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				1197040D257DDEA900FE4468 /* FaverateController.swift in Sources */,
 				1199BE902578C5FA000912C6 /* HomeCell.swift in Sources */,
 				30A18875258532D60050C174 /* PopoverAnimator.swift in Sources */,
+				30A188812585FE680050C174 /* NetworkTools.swift in Sources */,
 				1134FF17258320CD007E20A1 /* UIBarButtonItem_extension.swift in Sources */,
 				30764D9E25792C110073A0C4 /* ColorCell.swift in Sources */,
 				3020A354257927AF004AA995 /* ColorViewController.swift in Sources */,

@@ -11,7 +11,7 @@ target 'SwiftCocopods' do
     pod 'SnapKit', '~> 5.0.0'
     #字典转模型
     pod 'ObjectMapper', '~> 3.5'
-
+    pod 'AFNetworking', '~> 4.0.1'
 
 
 end
