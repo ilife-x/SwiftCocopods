@@ -45,7 +45,6 @@ class HomeCell: UICollectionViewCell {
             }
 
         }
-        
         get{return _colorModel!}
 
     }

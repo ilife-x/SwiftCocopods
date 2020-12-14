@@ -11,17 +11,34 @@ class ColorViewController: UIViewController {
     
     lazy var tableView:UITableView = UITableView(frame: CGRect.zero, style: UITableView.Style.plain)
     var modelArray=[ColorModel]()
+    var faverateModelArr = [ColorModel]()
+    var faverateTitleArr = [String]()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //设置导航栏
+        configNavigationBar()
         configUI()
         configData()
     }
     
-    func configUI()  {
-        //设置导航栏
-        configNavigationBar()
+    
+    func configNavigationBar() {
+        self.title = "中国色"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.red]
         
+        let faverateItem = UIBarButtonItem(imageName: "faverate",target: self,action: #selector(jumpToFaverateColorsController))
+        let deletaItem = UIBarButtonItem(imageName: "delete",target: self,action: #selector(jumpToDeleteColorsController))
+        
+        let array :[UIBarButtonItem] = [faverateItem,deletaItem]
+        self.navigationItem.rightBarButtonItems = array
+
+        
+    }
+    
+    func configUI()  {
         //主体
         self.view.backgroundColor = UIColor.white
         tableView.frame = CGRect(x: 0, y: kUINavigationBarHeight, width: kUIScreenWidth, height: kUIScreenHeight - kUINavigationBarHeight - kUIStatusBarHeight)
@@ -34,43 +51,6 @@ class ColorViewController: UIViewController {
         tableView.register(ColorCell.self, forCellReuseIdentifier: NSStringFromClass(ColorCell.self))
     }
     
-    func configNavigationBar() {
-        self.title = "中国色"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.red]
-        
-        
-
-        
-        
-//        let rightBtn1 = UIButton(type:.custom)
-//        rightBtn1.setBackgroundImage(UIImage(named: "faverate"), for: .normal)
-//        rightBtn1.addTarget(self, action: #selector(jumpToFaverateColorsController), for: .touchUpInside)
-//        let faverateItem = UIBarButtonItem(customView: rightBtn1)
-//
-//        let rightBtn2 = UIButton(type:.custom)
-//        rightBtn2.setBackgroundImage(UIImage(named: "delete"), for: .normal)
-//        rightBtn2.addTarget(self, action: #selector(jumpToDeleteColorsController), for: .touchUpInside)
-//        let deletaItem = UIBarButtonItem(customView: rightBtn2)
-        
-        let faverateItem = UIBarButtonItem(imageName: "faverate",target: self,action: #selector(jumpToFaverateColorsController))
-        let deletaItem = UIBarButtonItem(imageName: "delete",target: self,action: #selector(jumpToDeleteColorsController))
-        
-        
-        
-        
-        let array :[UIBarButtonItem] = [faverateItem,deletaItem]
-        self.navigationItem.rightBarButtonItems = array
-        
-        
-        let leftButton = UIButton(type: .custom)
-        leftButton.backgroundColor = .red
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
-        
-        
-    }
-    
-
-    
     func configData(){
         let path = Bundle.main.path(forResource: "colors", ofType: "json")
         let url = URL(fileURLWithPath: path!)
@@ -81,7 +61,7 @@ class ColorViewController: UIViewController {
                 let jsonArr = jsonData as! NSArray
                 
                 for dic in jsonArr {
-//                    print(dic as! [String:String])
+                    print(dic as! [String:String])
                     
                     let model:ColorModel = ColorModel.init(JSON: dic as! [String:String])!
 //                    print(model.title!,model.rgb!,model.cmyk!,model.hex!)
@@ -93,23 +73,9 @@ class ColorViewController: UIViewController {
                 print("读取本地数据出现错误!",error!)
             }
     }
-
 }
 
-
-/// MARK - Methods
-extension ColorViewController{
-    
-    @objc fileprivate func jumpToFaverateColorsController(){
-        self.navigationController?.pushViewController(FaverateController(), animated: true)
-    }
-    
-    @objc fileprivate func jumpToDeleteColorsController(){
-        self.navigationController?.pushViewController(DeleteController(), animated: true)
-     }
-}
-
-
+//MARK:- delegate & datasourse
 extension ColorViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -125,8 +91,23 @@ extension ColorViewController:UITableViewDelegate,UITableViewDataSource{
             let model = self.modelArray[indexPath.row]
             cell.backgroundColor = .white
             cell.model = model
+            cell.btnBlock = { model in
+                //添加模型到喜欢列表
+                if self.faverateTitleArr.contains(model.title!) {
+                    //如果已经添加过了,就移除
+                    let index = self.faverateTitleArr.firstIndex(of: model.title!)
+                    self.faverateTitleArr.remove(at: index!)
+                    self.faverateModelArr.remove(at: index!)
+                    
+                }else{
+                    //否则就添加
+                    self.faverateModelArr.append(model)
+                    self.faverateTitleArr.append(model.title!)
+                }
+                //重新赋值model,更新点击后的状态
+                cell.model = model
+            }
         }
-
         return cell!
     }
     
@@ -144,3 +125,38 @@ extension ColorViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
 }
+
+//MARK:- Methods
+extension ColorViewController{
+    
+    @objc fileprivate func jumpToFaverateColorsController(){
+        let faverateVc = FaverateController()
+        faverateVc.modelArray = faverateModelArr
+        faverateVc.faverateTitleArr = faverateTitleArr
+        faverateVc.updateBlock = {model in
+
+            
+            for var m in self.modelArray {
+                if m.title == model.title {
+                    m = model
+                }
+            }
+            
+            let index = self.faverateTitleArr.firstIndex(of: model.title!)
+            self.faverateTitleArr.remove(at: index!)
+            self.faverateModelArr.remove(at: index!)
+            
+            self.tableView.reloadData()
+            
+            
+            
+        }
+        self.navigationController?.pushViewController(faverateVc, animated: true)
+    }
+    
+    @objc fileprivate func jumpToDeleteColorsController(){
+        self.navigationController?.pushViewController(DeleteController(), animated: true)
+     }
+}
+
+

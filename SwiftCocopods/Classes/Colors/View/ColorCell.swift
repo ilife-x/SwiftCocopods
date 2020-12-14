@@ -17,13 +17,24 @@ class ColorCell: UITableViewCell {
     private var hexLabel :UILabel?
     private var descLabel :UILabel?
     private var favoriteBtn:UIButton?
+    private  var _model:ColorModel?
+    typealias ButtonClickBlock = (_ model : ColorModel)->Void
+    public var btnBlock : ButtonClickBlock?
+    
     
 
-    public  var model:ColorModel{
+    public var model:ColorModel{
         set(model){
-            
+            _model = model
             contentView.layer.borderColor = UIColor(hex: (model.hex?.appending("1f"))!)?.cgColor
             contentView.layer.backgroundColor = UIColor(hex: (model.hex?.appending("0f"))!)?.cgColor
+            if model.selected == true {
+                favoriteBtn?.setImage(UIImage(named: "shoucang_selected"), for: .normal)
+                favoriteBtn?.setImage(UIImage(named: "shoucang_selected"), for: .highlighted)
+            }else{
+                favoriteBtn?.setImage(UIImage(named: "shoucang"), for: .normal)
+                favoriteBtn?.setImage(UIImage(named: "shoucang"), for: .highlighted)
+            }
             
 
 
@@ -76,9 +87,9 @@ class ColorCell: UITableViewCell {
             }
   
         }
-//
+
         get{
-            return self.model
+            return _model!
         }
 
     }
@@ -134,10 +145,8 @@ class ColorCell: UITableViewCell {
         descLabel?.numberOfLines = 0
         
         favoriteBtn = UIButton(type: .custom)
-        favoriteBtn?.setImage(UIImage(named: "shoucang"), for: .normal)
-        favoriteBtn?.setImage(UIImage(named: "shoucang_selected"), for: .highlighted)
         favoriteBtn?.setImage(#imageLiteral(resourceName: "shoucang_selected"), for: .selected)
-        favoriteBtn?.addTarget(self, action: #selector(self.favoriateColor), for: .touchUpInside)
+        favoriteBtn?.addTarget(self, action: #selector(self.favoriateBtnClick), for: .touchUpInside)
 
         
 
@@ -203,8 +212,19 @@ class ColorCell: UITableViewCell {
      如果一个方法声明为private,就不会添加到方法列表中,报找不到此方法,如果依然需要添加到方法列表中,就需要添加@objc
      */
 
-   @objc private func favoriateColor(){
+   @objc private func favoriateBtnClick(){
         print("favoriateColor")
+//        favoriteBtn?.isSelected = self.model.selected
+    
+        //外面需要model,所以btnBlock 要有参数
+        if btnBlock != nil {
+            model.selected = !model.selected
+            self.btnBlock!(model)
+            print("favoriateColor---回传")
+
+
+        }
+
     }
 
 
