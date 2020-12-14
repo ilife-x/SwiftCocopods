@@ -69,7 +69,7 @@ class ColorDetailController: UIViewController {
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 60)
         titleLabel?.textAlignment = .center
         titleLabel?.textColor = .white
-        titleLabel?.backgroundColor = .green
+//        titleLabel?.backgroundColor = .green
         titleLabel?.text = model?.title
         titleLabel?.numberOfLines = 0
         
@@ -116,16 +116,19 @@ class ColorDetailController: UIViewController {
         //保存按钮
         let saveBtn = UIButton(type: .custom)
         saveBtn.frame = CGRect(x: 0, y: 600, width:40, height:40)
-        saveBtn.backgroundColor = .green
+//        saveBtn.backgroundColor = .green
         view.addSubview(saveBtn)
+        saveBtn.setBackgroundImage(UIImage(named: "downLoad"), for: .normal)
         saveBtn.addTarget(self, action: #selector(save), for: .touchUpInside)
         
         
         //分享按钮
         let sharebtn = UIButton(type: .custom)
         sharebtn.frame = CGRect(x: 100, y: 600, width:40, height:40)
-        sharebtn.backgroundColor = .green
+//        sharebtn.backgroundColor = .green
         view.addSubview(sharebtn)
+        sharebtn.setBackgroundImage(UIImage(named: "share"), for: .normal)
+
         sharebtn.addTarget(self, action: #selector(share), for: .touchUpInside)
         
         //长按分享
@@ -166,8 +169,8 @@ class ColorDetailController: UIViewController {
         
         saveBtn.snp.makeConstraints { (make) in
             make.left.equalTo(20)
-            make.bottom.equalTo(-20)
-            make.width.height.equalTo(40)
+            make.bottom.equalTo(-40)
+            make.width.height.equalTo(35)
         }
         
         sharebtn.snp.makeConstraints { (make) in
