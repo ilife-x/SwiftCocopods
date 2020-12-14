@@ -48,13 +48,12 @@ class ColorDetailController: UIViewController {
         self.tabBarController?.tabBar.alpha = 0
         view.backgroundColor = UIColor(hex: (model!.hex?.appending("FF"))!)
         
-        
-        
-//        titleLabel = UILabel(frame: CGRect(x: 20, y: kUINavigationBarHeight+20, width: 100, height: 50))
-//        titleLabel?.text = model?.title
-//        titleLabel?.textColor = .white
-//        titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-//        view.addSubview(titleLabel!)
+        //添加按钮
+        let btn = UIButton(type: .custom)
+        btn.frame = CGRect(x: 0, y: 600, width: 100, height: 100)
+        btn.backgroundColor = .green
+        view.addSubview(btn)
+        btn.addTarget(self, action: #selector(clickBtn(sender:)), for: .touchUpInside)
         
         //长按分享
         let longPressGes = UILongPressGestureRecognizer(target: self, action: #selector(share))
@@ -125,4 +124,18 @@ class ColorDetailController: UIViewController {
 
   }
     
+}
+
+// MARK: - button 的点击方法
+extension ColorDetailController{
+    @objc private func clickBtn(sender:UIButton){
+        /// 整个窗口截屏
+//        let image = UIApplication.shared.keyWindow!.asImage()
+
+        /// 某一个单独View截图
+       let image = self.view.asImage()
+
+        /// 将转换后的UIImage保存到相机胶卷中
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+    }
 }
