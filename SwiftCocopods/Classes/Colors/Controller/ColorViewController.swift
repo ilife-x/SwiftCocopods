@@ -85,9 +85,7 @@ extension ColorViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(ColorCell.self))
         cell?.selectionStyle = .none
-        
         if let cell = cell as? ColorCell {
-            
             let model = self.modelArray[indexPath.row]
             cell.backgroundColor = .white
             cell.model = model
@@ -111,10 +109,9 @@ extension ColorViewController:UITableViewDelegate,UITableViewDataSource{
         return cell!
     }
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-      
         return 180
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -135,7 +132,6 @@ extension ColorViewController{
         faverateVc.faverateTitleArr = faverateTitleArr
         faverateVc.updateBlock = {model in
 
-            
             for var m in self.modelArray {
                 if m.title == model.title {
                     m = model
@@ -145,16 +141,15 @@ extension ColorViewController{
             let index = self.faverateTitleArr.firstIndex(of: model.title!)
             self.faverateTitleArr.remove(at: index!)
             self.faverateModelArr.remove(at: index!)
-            
             self.tableView.reloadData()
-            
-            
-            
+
         }
+        
         self.navigationController?.pushViewController(faverateVc, animated: true)
     }
     
     @objc fileprivate func jumpToDeleteColorsController(){
+        
         self.navigationController?.pushViewController(DeleteController(), animated: true)
      }
 }

@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.title = "home"
         self.navigationItem.titleView?.backgroundColor = .black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        
         //设置导航栏背景为空图片
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -146,6 +147,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         return cell;
         
+    }
+    
+    deinit {
+        autoTimer?.invalidate()
     }
     
 

@@ -8,7 +8,27 @@
 import UIKit
 
 class CTView: UIView {
-
+//    var str : String?
+//
+////    override init(frame: CGRect) {
+////        if self = super.init(frame: frame) {
+////
+////        }
+////        return self
+////    }
+//
+//    convenience init(str:String){
+//        let view = CTView.init
+//        view.str = str
+//        return
+//    }
+//
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//
+    
     // 空实现会对动画期间的性能产生负面影响.
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -25,6 +45,8 @@ class CTView: UIView {
         path.addRect(self.bounds)
         
         let attString = "我总想要穿越人海和潮流\n但穿越不了的是你我的鸿沟\nso this way \n 终究还是要自己走\n...\n嗯呀"
+//        let attString = str
+
         
         
         let mutableAttrStr = NSMutableAttributedString(string: attString)
