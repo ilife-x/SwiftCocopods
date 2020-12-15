@@ -27,7 +27,8 @@ class ColorCell: UITableViewCell {
         set(model){
             _model = model
             contentView.layer.borderColor = UIColor(hex: (model.hex?.appending("1f"))!)?.cgColor
-            contentView.layer.backgroundColor = UIColor(hex: (model.hex?.appending("0f"))!)?.cgColor
+//            contentView.layer.backgroundColor = UIColor(hex: (model.hex?.appending("0f"))!)?.cgColor
+            contentView.backgroundColor = .white
             if model.selected == true {
                 favoriteBtn?.setImage(UIImage(named: "shoucang_selected"), for: .normal)
                 favoriteBtn?.setImage(UIImage(named: "shoucang_selected"), for: .highlighted)
@@ -44,8 +45,8 @@ class ColorCell: UITableViewCell {
             if ((model.title?.contains("白")) == true || model.title?.contains("黄") == true) {
                 let randomColor = UIColor.randomColor
                 
-                titleLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
-                titleLabel?.textColor = randomColor
+//                titleLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
+//                titleLabel?.textColor = randomColor
 
                 rgbLabel?.text = "RGB: ".appending(model.rgb!)
                 rgbLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
@@ -62,8 +63,8 @@ class ColorCell: UITableViewCell {
                 descLabel?.textColor = randomColor
 
             }else{
-                titleLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
-                titleLabel?.textColor = .white
+//                titleLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
+//                titleLabel?.textColor = .white
 
                 rgbLabel?.text = "RGB: ".appending(model.rgb!)
                 rgbLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
@@ -105,9 +106,9 @@ class ColorCell: UITableViewCell {
     
     func configUI(){
         
-        self.contentView.layer.shadowColor = UIColor.black.cgColor
-        contentView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        contentView.layer.shadowOpacity = 0.25
+//        self.contentView.layer.shadowColor = UIColor.black.cgColor
+//        contentView.layer.shadowOffset = CGSize(width: 1, height: 1)
+//        contentView.layer.shadowOpacity = 0.25
         
         contentView.layer.borderWidth = 1
         
@@ -118,7 +119,8 @@ class ColorCell: UITableViewCell {
         titleLabel = UILabel()
         titleLabel?.layer.cornerRadius = 10
         titleLabel?.layer.masksToBounds = true
-        titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        titleLabel?.textColor = .black
         titleLabel?.textAlignment = .center
         
         rgbLabel = UILabel()

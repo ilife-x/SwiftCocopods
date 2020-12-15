@@ -20,7 +20,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
-        self.title = "home"
         self.navigationItem.titleView?.backgroundColor = .black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         
@@ -30,7 +29,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         configUI()
         configData()
-        setTimer()
+//        setTimer()
     }
     
     func configUI() {
@@ -51,18 +50,39 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         let showCardView = UIView()
         showCardView.backgroundColor = UIColor.randomColor
-        showCardView.layer.cornerRadius = 30
         self.view.addSubview(showCardView)
-        showCardView.layer.shadowColor = UIColor.randomColor.cgColor
-        showCardView.layer.shadowOffset = CGSize(width: 5, height: -15)
-        showCardView.layer.shadowOpacity = 0.15
-        showCardView.layer.borderWidth = 2
-        
-        
+
+        //排版层
         let ctview = CTView()
+        let str = "我总想要穿越人海和潮流\n但穿越不了的是你我的鸿沟\nso this way \n 终究还是要自己走\n...\n嗯呀"
+        let mStr = NSMutableAttributedString(string:str )
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = -30
+        mStr.addAttributes([
+                .font:UIFont.systemFont(ofSize: 18),
+                .foregroundColor:UIColor.white,
+                //0:水平绘制文本,1,竖直绘制文本
+                .verticalGlyphForm:1,
+                .paragraphStyle:paragraphStyle],
+            range:NSRange(location: 0,length: mStr.length))
+        ctview.mutableAttrStr = mStr
         ctview.backgroundColor = .clear
         showCardView.addSubview(ctview)
-                
+        let inner:CATransform3D = CATransform3DMakeRotation(.pi/2, 0, 0, 1)
+        ctview.layer.transform = inner;
+        
+        let dateLabel = UILabel()
+        dateLabel.layer.cornerRadius = 5
+        dateLabel.layer.masksToBounds = true
+        dateLabel.text = "24"
+        dateLabel.backgroundColor = .white
+        dateLabel.layer.cornerRadius = 5
+        dateLabel.textAlignment = .center
+        dateLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        dateLabel.textColor = .black
+        showCardView.addSubview(dateLabel)
+
+   
         collectionView?.snp.makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.right.equalTo(0)
@@ -70,10 +90,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         showCardView.snp.makeConstraints { (make) in
-            make.top.equalTo(collectionView!.snp.bottom).offset(20)
-            make.left.equalTo(50)
-            make.right.equalTo(-50)
-            make.bottom.equalTo(-100)
+            make.top.equalTo(collectionView!.snp.bottom).offset(0)
+            make.left.right.bottom.equalTo(0)
         }
         
         ctview.snp.makeConstraints { (make) in
@@ -83,9 +101,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         }
         
+        dateLabel.snp.makeConstraints { (make) in
+            make.top.left.equalTo(8)
+            make.width.height.equalTo(60)
+        }
         
-        let inner:CATransform3D = CATransform3DMakeRotation(.pi/2, 0, 0, 1)
-        ctview.layer.transform = inner;
+        
+
         
     }
     
@@ -117,7 +139,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 
                 for dic in jsonArr {
 //                    print(dic as! [String:String])
-                    
                     let model:ColorModel = ColorModel.init(JSON: dic as! [String:String])!
 //                    print(model.title!,model.rgb!,model.cmyk!,model.hex!)
                     modelArray.append(model)
@@ -129,9 +150,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
     }
     
-    
-    /// MARK :delegate &datasource
-    
+// MARK:- delegate &datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return modelArray.count
     }

@@ -66,7 +66,7 @@ class ColorDetailController: UIViewController {
         titleLabel = UILabel()
         titleLabel?.layer.cornerRadius = 10
         titleLabel?.layer.masksToBounds = true
-        titleLabel?.font = UIFont.boldSystemFont(ofSize: 60)
+        titleLabel?.font = UIFont.systemFont(ofSize: 60)
         titleLabel?.textAlignment = .center
         titleLabel?.textColor = .white
 //        titleLabel?.backgroundColor = .green
@@ -113,6 +113,38 @@ class ColorDetailController: UIViewController {
         card?.addSubview(hexLabel!)
         card?.addSubview(descLabel!)
         
+        //排版层
+        let ctview = CTView()
+//        let str = "青春\n\t是一场不会回头的风，\n它呼啸而来呼啸而去，\n最终离我们远去，\n一点不剩。"
+        let str = """
+        我们都在 用力的活着
+        爱恨成败 里 赢过也输过\n
+        也曾灿烂失落
+        无悔选择
+        相信磨难历尽 是收获
+        成长的路上 有几程曲折
+        我以 汗水浇灌 梦想花朵
+        任凭谁冷眼 嘲我或轻我
+        都会风轻云淡
+        一笑而过
+"""
+        
+        let mStr = NSMutableAttributedString(string:str )
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = -30
+        mStr.addAttributes([
+                .font:UIFont.systemFont(ofSize: 18),
+                .foregroundColor:UIColor.white,
+                //0:水平绘制文本,1,竖直绘制文本
+                .verticalGlyphForm:1,
+                .paragraphStyle:paragraphStyle],
+            range:NSRange(location: 0,length: mStr.length))
+        ctview.mutableAttrStr = mStr
+        ctview.backgroundColor = .clear
+        card?.addSubview(ctview)
+        let inner:CATransform3D = CATransform3DMakeRotation(.pi/2, 0, 0, 1)
+        ctview.layer.transform = inner;
+        
         //保存按钮
         let saveBtn = UIButton(type: .custom)
         saveBtn.frame = CGRect(x: 0, y: 600, width:40, height:40)
@@ -148,6 +180,14 @@ class ColorDetailController: UIViewController {
             make.height.equalTo(150)
             
         })
+        
+        ctview.snp.makeConstraints { (make) in
+            make.width.equalTo(250)
+            make.height.equalTo(kUIScreenWidth-100)
+//            make.top.equalTo(titleLabel!.snp.bottom).offset(100)
+            make.centerX.equalTo(card!.snp.centerX).offset(0)
+            make.centerY.equalTo(card!.snp.centerY).offset(100)
+        }
         
         
         rgbLabel?.snp.makeConstraints({ (make) in

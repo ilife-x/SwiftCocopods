@@ -15,8 +15,5 @@ class HomeDetailController: UIViewController {
         self.view.backgroundColor = .white
 
     }
-    
-
-
 
 }
