@@ -8,8 +8,12 @@
 import UIKit
 
 class ColorCell: UITableViewCell {
-
-
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+            super.init(style: style, reuseIdentifier: reuseIdentifier)
+            configUI()
+    }
+    
     private var colorView:UIView?
     private  var titleLabel: UILabel?
     private var rgbLabel :UILabel?
@@ -17,101 +21,60 @@ class ColorCell: UITableViewCell {
     private var hexLabel :UILabel?
     private var descLabel :UILabel?
     private var favoriteBtn:UIButton?
-    private  var _model:ColorModel?
+    
     typealias ButtonClickBlock = (_ model : ColorModel)->Void
     public var btnBlock : ButtonClickBlock?
-    
-    
-
-    public var model:ColorModel{
-        set(model){
-            _model = model
-            contentView.layer.borderColor = UIColor(hex: (model.hex?.appending("1f"))!)?.cgColor
-//            contentView.layer.backgroundColor = UIColor(hex: (model.hex?.appending("0f"))!)?.cgColor
+    var model:ColorModel?{
+        didSet{
+            contentView.layer.borderColor = UIColor(hex: (model!.hex?.appending("1f"))!)?.cgColor
+            contentView.layer.backgroundColor = UIColor(hex: (model!.hex?.appending("0f"))!)?.cgColor
             contentView.backgroundColor = .white
-            if model.selected == true {
+            if model!.selected == true {
                 favoriteBtn?.setImage(UIImage(named: "shoucang_selected"), for: .normal)
                 favoriteBtn?.setImage(UIImage(named: "shoucang_selected"), for: .highlighted)
             }else{
                 favoriteBtn?.setImage(UIImage(named: "shoucang"), for: .normal)
                 favoriteBtn?.setImage(UIImage(named: "shoucang"), for: .highlighted)
             }
+
+            let bgcolor = UIColor(hex: (model?.hex?.appending("ff"))!)
             
-
-
+            colorView?.backgroundColor = bgcolor
             
-            titleLabel?.text = model.title
+            titleLabel?.text = model!.title
             
-            if ((model.title?.contains("白")) == true || model.title?.contains("黄") == true) {
-                let randomColor = UIColor.randomColor
-                
-//                titleLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
-//                titleLabel?.textColor = randomColor
+            rgbLabel?.text = "RGB: ".appending(model!.rgb!)
+            rgbLabel?.backgroundColor = bgcolor
 
-                rgbLabel?.text = "RGB: ".appending(model.rgb!)
-                rgbLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
-                rgbLabel?.textColor = randomColor
+            cmykLabel?.text = "CMYK: ".appending(model!.cmyk!)
+            cmykLabel?.backgroundColor = bgcolor
 
-                cmykLabel?.text = "CMYK: ".appending(model.cmyk!)
-                cmykLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
-                cmykLabel?.textColor = randomColor
+            hexLabel?.text = "HEX: ".appending((model!.hex?.appending("ff"))!)
+            hexLabel?.backgroundColor = bgcolor
 
-                hexLabel?.text = "HEX: ".appending((model.hex?.appending("ff"))!)
-                hexLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
-                hexLabel?.textColor = randomColor
-                
-                descLabel?.textColor = randomColor
-
-            }else{
-//                titleLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
-//                titleLabel?.textColor = .white
-
-                rgbLabel?.text = "RGB: ".appending(model.rgb!)
-                rgbLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
-
-                cmykLabel?.text = "CMYK: ".appending(model.cmyk!)
-                cmykLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
-
-                hexLabel?.text = "HEX: ".appending((model.hex?.appending("ff"))!)
-                hexLabel?.backgroundColor = UIColor (hex: (model.hex?.appending("ff"))!)
-                
-                descLabel?.textColor = UIColor (hex: (model.hex?.appending("ff"))!)
-                
-                if model.desc!.isEmpty {
-                    descLabel?.text =  model.title?.appending(": 少年!我只能说只可意会不可言传")
-                }else{
-                    descLabel?.text = model.desc
-
-                }
-                colorView?.backgroundColor = UIColor(hex: (model.hex?.appending("ff"))!)
-
-            }
-  
         }
-
-        get{
-            return _model!
-        }
-
     }
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.configUI()
-    }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func configUI(){
-        
-//        self.contentView.layer.shadowColor = UIColor.black.cgColor
-//        contentView.layer.shadowOffset = CGSize(width: 1, height: 1)
-//        contentView.layer.shadowOpacity = 0.25
-        
+
+//如果一个方法声明为private,就不会添加到方法列表中,报找不到此方法,如果依然需要添加到方法列表中,就需要添加@objc
+   @objc private func favoriateBtnClick(){
+        //外面需要model,所以btnBlock 要有参数
+        if btnBlock != nil {
+            model!.selected = !model!.selected
+            self.btnBlock!(model!)
+            print("favoriateColor---回'传")
+        }
+    }
+}
+
+// MARK: - 设置界面
+extension ColorCell {
+    /// 设置界面
+    private func configUI() {
         contentView.layer.borderWidth = 1
-        
         
         colorView = UIView()
         colorView?.layer.cornerRadius = 30
@@ -141,7 +104,6 @@ class ColorCell: UITableViewCell {
         hexLabel?.layer.masksToBounds = true
         hexLabel?.textAlignment = .right
 
-        
         descLabel = UILabel()
         descLabel?.font = UIFont.systemFont(ofSize: 15)
         descLabel?.numberOfLines = 0
@@ -150,9 +112,6 @@ class ColorCell: UITableViewCell {
         favoriteBtn?.setImage(#imageLiteral(resourceName: "shoucang_selected"), for: .selected)
         favoriteBtn?.addTarget(self, action: #selector(self.favoriateBtnClick), for: .touchUpInside)
 
-        
-
-        
         contentView.addSubview(colorView!)
         contentView.addSubview(titleLabel!)
         contentView.addSubview(rgbLabel!)
@@ -161,10 +120,6 @@ class ColorCell: UITableViewCell {
         contentView.addSubview(descLabel!)
         contentView.addSubview(favoriteBtn!)
         
-        layoutIfNeeded()
-    }
-    
-    override func layoutSubviews() {
         colorView?.snp.makeConstraints({ (make) in
             make.width.height.equalTo(100)
             make.top.left.equalTo(10)
@@ -201,7 +156,6 @@ class ColorCell: UITableViewCell {
             make.top.equalTo(titleLabel!.snp.bottom).offset(20)
             make.right.equalTo(-10)
 
-
         })
         
         favoriteBtn?.snp.makeConstraints({ (make) in
@@ -209,26 +163,4 @@ class ColorCell: UITableViewCell {
             make.width.height.equalTo(30)
         })
     }
-    
-    /**
-     如果一个方法声明为private,就不会添加到方法列表中,报找不到此方法,如果依然需要添加到方法列表中,就需要添加@objc
-     */
-
-   @objc private func favoriateBtnClick(){
-        print("favoriateColor")
-//        favoriteBtn?.isSelected = self.model.selected
-    
-        //外面需要model,所以btnBlock 要有参数
-        if btnBlock != nil {
-            model.selected = !model.selected
-            self.btnBlock!(model)
-            print("favoriateColor---回传")
-
-
-        }
-
-    }
-
-
 }
-
