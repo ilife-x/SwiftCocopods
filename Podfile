@@ -12,6 +12,9 @@ target 'SwiftCocopods' do
     #字典转模型
     pod 'ObjectMapper', '~> 3.5'
     pod 'AFNetworking', '~> 4.0.1'
+    pod 'SVProgressHUD'
 
+
+    
 
 end

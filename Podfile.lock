@@ -16,23 +16,27 @@ PODS:
     - AFNetworking/NSURLSession
   - ObjectMapper (3.5.3)
   - SnapKit (5.0.1)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 4.0.1)
   - ObjectMapper (~> 3.5)
   - SnapKit (~> 5.0.0)
+  - SVProgressHUD
 
 SPEC REPOS:
   trunk:
     - AFNetworking
     - ObjectMapper
     - SnapKit
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 017c019d34e2a6a5656c983c8351121a57a930e7
+PODFILE CHECKSUM: 012d2f81ae68d71df9aebc78dfab1eb113d0465d
 
-COCOAPODS: 1.10.0.beta.1
+COCOAPODS: 1.9.3

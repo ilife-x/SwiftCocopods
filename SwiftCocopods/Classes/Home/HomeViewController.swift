@@ -13,8 +13,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var modelArray=[ColorModel]()
     var collectionView:UICollectionView?
     var autoTimer:Timer?
-    var index:Int = 0
-    var px:CGFloat = 0
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +27,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         configUI()
         configData()
-//        setTimer()
+        setTimer()
     }
     
     func configUI() {
@@ -57,7 +55,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let str = "我总想要穿越人海和潮流\n但穿越不了的是你我的鸿沟\nso this way \n 终究还是要自己走\n...\n嗯呀"
         let mStr = NSMutableAttributedString(string:str )
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = -30
+        paragraphStyle.lineSpacing = -10
         mStr.addAttributes([
                 .font:UIFont.systemFont(ofSize: 18),
                 .foregroundColor:UIColor.white,
@@ -116,9 +114,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @objc func scroll(){
-        index = index + 1
-        px = px + 10
-        index = index >= modelArray.count ? 0 :index
 
         collectionView?.contentOffset.x = (collectionView?.contentOffset.x)! + 0.5
 
@@ -150,7 +145,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
     }
     
+
+
+    
+    deinit {
+        autoTimer?.invalidate()
+    }
+    
+
+}
+
+
+
 // MARK:- delegate &datasource
+extension HomeViewController{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return modelArray.count
     }
@@ -168,11 +176,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
-    deinit {
-        autoTimer?.invalidate()
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = self.modelArray[indexPath.row]
+        let colorDetailVc = ColorDetailController()
+        colorDetailVc.model = model
+        self.navigationController?.pushViewController(colorDetailVc, animated: true)
+        
+        
+        
+        print("----indexpath\(model)--")
     }
-    
-
 }
-
-

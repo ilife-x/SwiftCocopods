@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ColorDetailController: UIViewController {
 
@@ -66,7 +67,7 @@ class ColorDetailController: UIViewController {
         titleLabel = UILabel()
         titleLabel?.layer.cornerRadius = 10
         titleLabel?.layer.masksToBounds = true
-        titleLabel?.font = UIFont.systemFont(ofSize: 60)
+        titleLabel?.font = UIFont.systemFont(ofSize: 40)
         titleLabel?.textAlignment = .center
         titleLabel?.textColor = .white
 //        titleLabel?.backgroundColor = .green
@@ -131,7 +132,7 @@ class ColorDetailController: UIViewController {
         
         let mStr = NSMutableAttributedString(string:str )
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = -30
+        paragraphStyle.lineSpacing = -10
         mStr.addAttributes([
                 .font:UIFont.systemFont(ofSize: 18),
                 .foregroundColor:UIColor.white,
@@ -177,7 +178,7 @@ class ColorDetailController: UIViewController {
             make.centerX.equalTo(card!.snp.centerX)
             make.top.equalTo(kUIScreenHeight/6)
             make.width.equalTo(80)
-            make.height.equalTo(150)
+            make.height.equalTo(180)
             
         })
         
@@ -210,7 +211,7 @@ class ColorDetailController: UIViewController {
         saveBtn.snp.makeConstraints { (make) in
             make.left.equalTo(20)
             make.bottom.equalTo(-40)
-            make.width.height.equalTo(35)
+            make.width.height.equalTo(30)
         }
         
         sharebtn.snp.makeConstraints { (make) in
@@ -233,12 +234,30 @@ extension ColorDetailController{
     
     //截图保存
     @objc private func save(){
-        /// 整个窗口截屏
+        // 整个窗口截屏
         //let image = UIApplication.shared.keyWindow!.asImage()
-        /// 某一个单独View截图
+        // 某一个单独View截图
        let image = self.view.asImage()
-        /// 将转换后的UIImage保存到相机胶卷中
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+
+        
+        let alertVc = UIAlertController(title: "保存图片", message: "确定要讲图片保存到相册中吗?", preferredStyle: .actionSheet)
+        let cancle = UIAlertAction(title: "取消", style: .destructive) { (_) in
+            print("---cancle")
+        }
+        
+        let confirm = UIAlertAction(title: "确定", style: .default) { (_) in
+            // 将转换后的UIImage保存到相机胶卷中
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            
+            // 展示保存成功的小提示
+            SVProgressHUD.showSuccess(withStatus: "图片已成功保存,请在相册中查看")
+            SVProgressHUD.dismiss(withDelay: 1.0)
+        }
+        alertVc.addAction(cancle)
+        alertVc.addAction(confirm)
+        
+        self.present(alertVc, animated: true, completion: nil)
+        
     }
     
     
